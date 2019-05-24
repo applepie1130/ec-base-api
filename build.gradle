@@ -1,0 +1,53 @@
+plugins {
+	//id 'org.springframework.boot' version '2.0.0.M1'
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'cj'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	
+	/* Swagger Settings */
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'	
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	compile group: 'io.swagger', name: 'swagger-annotations', version: '1.5.22'
+	compile group: 'io.swagger', name: 'swagger-models', version: '1.5.22'
+	/* Swagger Settings */
+	
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		//exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		//exclude group: 'junit', module: 'junit'
+	}
+	
+	[compileJava, compileTestJava]*.options*.encoding = 'UTF-8' 
+}
+
+test {
+	useJUnitPlatform()
+}
