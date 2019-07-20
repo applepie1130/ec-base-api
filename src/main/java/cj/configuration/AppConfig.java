@@ -1,14 +1,15 @@
 package cj.configuration;
 
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configurable
-public class AppConfig {
+public class AppConfig { 
 
 	/**
 	 *	요청을 보낼 때 사용할 문자 코드를 UTF-8로 설정 (서브릿 필터)
@@ -23,4 +24,5 @@ public class AppConfig {
 		
 		return filter;
 	}
+	
 }
