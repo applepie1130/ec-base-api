@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel(value="CouponTuple", description="쿠폰정보")
 public class CouponTuple implements Serializable {

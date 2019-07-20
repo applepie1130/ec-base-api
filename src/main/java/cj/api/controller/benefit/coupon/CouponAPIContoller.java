@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cj.api.model.benefit.coupon.tuple.CouponTuple;
+import cj.api.model.benefit.coupon.tuple.CouponTuple.CouponTupleBuilder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -35,17 +36,19 @@ public class CouponAPIContoller {
 			@RequestParam(value="itemCode", defaultValue = "") String itemCode,
 			@RequestParam(value="channelCode", defaultValue = "") Integer channelCode
 		) {
-		CouponTuple couponTuple = new CouponTuple();
-		couponTuple.setOfferCode("R19052116LL82930");
-		couponTuple.setOfferName("★텐바이텐 5% 쿠폰_M");
-		couponTuple.setChannelCode(50001001);
-		couponTuple.setDcAmount(BigDecimal.ZERO);
-		couponTuple.setDcRate(5);
-		couponTuple.setDcClsCode("2");
-		couponTuple.setMaxDcAmount(BigDecimal.ZERO);
-		couponTuple.setDuplicationYn("0");
-		couponTuple.setMinMarginRate(BigDecimal.ZERO);
-		couponTuple.setSpItemObjYn("1");
+		
+		CouponTuple couponTuple = CouponTuple.builder()	
+		.offerCode("R19052116LL82930")
+		.offerName("★텐바이텐 5% 쿠폰_M")
+		.channelCode(50001001)
+		.dcAmount(BigDecimal.ZERO)
+		.dcRate(5)
+		.dcClsCode("2")
+		.maxDcAmount(BigDecimal.ZERO)
+		.duplicationYn("0")
+		.minMarginRate(BigDecimal.ZERO)
+		.spItemObjYn("1")
+		.build();
 		
 		return couponTuple;
 	}

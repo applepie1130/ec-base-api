@@ -3,6 +3,7 @@ package cj.api.model.benefit.coupon.criteria;
 
 import java.io.Serializable;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
