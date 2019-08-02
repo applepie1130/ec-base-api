@@ -7,3 +7,16 @@ server:
 #  resources:
 #    static-locations:
 #    - /swagger/
+
+
+#Spring Data Redis 설정
+spring:
+  redis:
+    cluster:
+      nodes:
+        - 10.88.10.150:6379
+        - 10.88.10.151:6379
+        - 10.88.10.152:6379
+    maxTotal: 30
+    maxIdle: 30
+    minIdle: 10
