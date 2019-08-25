@@ -3,6 +3,7 @@ package cj.api.controller.benefit.coupon;
 
 import java.math.BigDecimal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cj.api.model.benefit.coupon.tuple.CouponTuple;
-import cj.api.model.benefit.coupon.tuple.CouponTuple.CouponTupleBuilder;
+import cj.api.service.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,6 +21,9 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/v1/benefit/coupon")
 public class CouponAPIContoller {
+	
+	@Autowired
+	private TestService testService;
 	
 	@GetMapping( path="/item", produces = MediaType.APPLICATION_JSON_VALUE )
 	@ApiOperation(
@@ -36,6 +40,9 @@ public class CouponAPIContoller {
 			@RequestParam(value="itemCode", defaultValue = "") String itemCode,
 			@RequestParam(value="channelCode", defaultValue = "") Integer channelCode
 		) {
+		
+		testService.getService();
+		
 		
 		CouponTuple couponTuple = CouponTuple.builder()	
 		.offerCode("R19052116LL82930")
